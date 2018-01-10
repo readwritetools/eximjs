@@ -9,7 +9,11 @@ module.exports = class Eximjs {
             var e = new Pfile(process.argv[2]);
             if (e.exists()) {
                 var r = new Pfile(process.argv[3]);
-                this.process(e, r);
+                try {
+                    return this.process(e, r), 0;
+                } catch (e) {
+                    return terminal.writeToConsoleOrStderr(e.message), 1;
+                }
             } else terminal.writeToConsoleOrStderr(green(this.inputPfile.name) + ' not found');
         }
     }
@@ -32,21 +36,21 @@ module.exports = class Eximjs {
         s = a.trim()), ';' == o.charAt(o.length - 1) && (o = o.substr(0, o.length - 1));
         var p = o.charAt(0), x = o.charAt(o.length - 1);
         p != x || '"' != p && '\'' != p || (o = o.substr(1, o.length - 2));
-        var f = -1 != o.indexOf('./');
-        if (1 == n && 1 == f) {
+        var c = -1 != o.indexOf('./');
+        if (1 == n && 1 == c) {
             o.search('.js') != o.length - 3 && (o += '.js');
             return `var ${s} = require('${o}').${s};`;
         }
-        if (1 == n && 0 == f) {
-            var c = o;
-            return `var ${s} = require('${c}').${s};`;
+        if (1 == n && 0 == c) {
+            var f = o;
+            return `var ${s} = require('${f}').${s};`;
         }
-        if (0 == n && 1 == f) {
+        if (0 == n && 1 == c) {
             o.search('.js') != o.length - 3 && (o += '.js');
             return `var ${s} = require('${o}');`;
         }
-        var v = new Pfile(o).getFilename();
-        return `var ${s} = require('${v}');`;
+        var m = new Pfile(o).getFilename();
+        return `var ${s} = require('${m}');`;
     }
     fixupExport(e) {
         return expect(e, 'String'), e.replace('export default', 'module.exports =');

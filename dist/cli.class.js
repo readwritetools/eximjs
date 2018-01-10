@@ -39,7 +39,7 @@ module.exports = class CLI {
         terminal.writeToConsoleOrStderr(e + '\n'), process.exit(0);
     }
     execute() {
-        var e = new Eximjs();
-        e.execute();
+        var e = new Eximjs(), s = e.execute();
+        process.exit(s);
     }
 };

@@ -36,7 +36,14 @@ module.exports = class Eximjs {
 		}
 		var outputPfile = new Pfile(process.argv[3]);
 		
-		this.process(inputPfile, outputPfile);
+		try {
+			this.process(inputPfile, outputPfile);
+			return 0;
+		}
+		catch(err) {
+			terminal.writeToConsoleOrStderr(err.message);
+			return 1;
+		}
 	}
 	
 	process(inputPfile, outputPfile) {

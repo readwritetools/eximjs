@@ -94,7 +94,8 @@ module.exports = class CLI {
 
     execute() {
 	    var eximjs = new Eximjs();
-	    eximjs.execute();
+	    var rc = eximjs.execute();
+		process.exit(rc);
     }
 
 }

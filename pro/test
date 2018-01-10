@@ -1,0 +1,17 @@
+!blue 2.0
+//=============================================================================
+//
+// File:         eximjs/pro/test
+// Language:     prorenata script
+// Copyright:    Joe Honton © 2018
+// License:      CC-BY-NC-ND 4.0
+// Initial date: Jan 8, 2018
+// Contents:     Run prorenata directly on src/main.js
+//
+//=============================================================================
+
+//
+// ---------- run eximjs directly from src  ---------- 
+run {
+	sh node ../src/main.js ../test/test01-es2015.js ../test/test01-es5.js
+}

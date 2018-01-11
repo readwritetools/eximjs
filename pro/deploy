@@ -11,16 +11,27 @@
 //=============================================================================
 
 template {
-	minify     node /usr/lib/node_modules/uglify-es/bin/uglifyjs <source> --output <dest> --compress --mangle --keep-classnames --keep-fnames --beautify quote_style=1 --ecma 8 		/* npm install -g uglify-es */
+	/* npm install -g uglify-es */
+	minify     uglifyjs <source> --output <dest> --compress --mangle --keep-classnames --keep-fnames --beautify quote_style=1 --ecma 8
 }
 
-//
+// ---------- check to make sure repo has no uncommited work ---------- 
+run {
+	sh git diff-index --quiet HEAD
+}
+
 // ---------- remove comments and whitespace ---------- 
 recurse {
 	source    '../src'
 	dest      '../dist'
 	overwrite older
 	exec      minify
+}
+
+// ---------- look for cruft in final dist compared to original src ---------- 
+compare {
+	source    '../dist'
+	dest      '../src'
 }
 
 // ---------- bump version and push repo to origin ---------- 
@@ -30,4 +41,5 @@ run {
 	sh npm version patch
 	sh git push
 	sh git push --tags
+	onerror continue
 }

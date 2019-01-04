@@ -19,7 +19,7 @@ template {
 
 // ---------- remove comments and whitespace ---------- 
 recurse {
-	source    '../dbg'
+	source    '../src'		// unlike all other libraries, exmijs does not have a 'dbg' directory
 	dest      '../dist'
 	include   '*.js'
 	overwrite older

@@ -1,3 +1,4 @@
+/* Copyright (c) 2019 Read Write Tools */
 var expect = require('joezone').expect, terminal = require('joezone').terminal, Pfile = require('joezone').Pfile, TextReader = require('joezone').TextReader, TextWriter = require('joezone').TextWriter, fs = require('fs');
 
 module.exports = class Eximjs {

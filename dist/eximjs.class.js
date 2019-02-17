@@ -32,28 +32,32 @@ module.exports = class Eximjs {
         r = r.trim();
         var t = /import\s+(.*?)\s+from\s+(.*)/, i = t.exec(r);
         if (null == i) return e;
-        var n, s, a = i[1], o = i[2], l = a.indexOf('{'), u = a.indexOf('}');
-        -1 != l && -1 != u && l < u ? (n = !0, s = a.substr(l + 1, u - l - 1).trim()) : (n = !1, 
-        s = a.trim()), ';' == o.charAt(o.length - 1) && (o = o.substr(0, o.length - 1));
-        var p = o.charAt(0), x = o.charAt(o.length - 1);
-        p != x || '"' != p && '\'' != p || (o = o.substr(1, o.length - 2));
-        var c = -1 != o.indexOf('./');
+        var n, s, o = i[1], a = i[2], l = o.indexOf('{'), u = o.indexOf('}');
+        -1 != l && -1 != u && l < u ? (n = !0, s = o.substr(l + 1, u - l - 1).trim()) : (n = !1, 
+        s = o.trim()), ';' == a.charAt(a.length - 1) && (a = a.substr(0, a.length - 1));
+        var p = a.charAt(0), x = a.charAt(a.length - 1);
+        p != x || '"' != p && '\'' != p || (a = a.substr(1, a.length - 2));
+        var c = -1 != a.indexOf('./');
         if (1 == n && 1 == c) {
-            o.search('.js') != o.length - 3 && (o += '.js');
-            return `var ${s} = require('${o}').${s};`;
+            a.search('.js') != a.length - 3 && (a += '.js');
+            return `var ${s} = require('${a}').${s};`;
         }
         if (1 == n && 0 == c) {
-            var f = o;
+            var f = a;
             return `var ${s} = require('${f}').${s};`;
         }
         if (0 == n && 1 == c) {
-            o.search('.js') != o.length - 3 && (o += '.js');
-            return `var ${s} = require('${o}');`;
+            a.search('.js') != a.length - 3 && (a += '.js');
+            return `var ${s} = require('${a}');`;
         }
-        var m = new Pfile(o).getFilename();
-        return `var ${s} = require('${m}');`;
+        var v = new Pfile(a).getFilename();
+        return `var ${s} = require('${v}');`;
     }
     fixupExport(e) {
-        return expect(e, 'String'), e.replace('export default', 'module.exports =');
+        expect(e, 'String'), e = e.replace('export default', 'module.exports =');
+        var r = /export\s+(class|function)\s+(.*?)\s+\{/, t = r.exec(e);
+        if (null == t) return e;
+        var i = t[1], n = t[2], s = `module.exports.${n} = ${i} ${n} {`;
+        return s;
     }
 };

@@ -164,7 +164,19 @@ module.exports = class Eximjs {
 	//Convert to:   module.exports = class ToolBox {
 	fixupExport(line) {
 		expect(line, 'String');
-		
-		return line.replace('export default', 'module.exports =');
+
+		// pattern 1:
+		line = line.replace('export default', 'module.exports =');		// export default class ToolBox {
+																		// module.exports = class ToolBox {		
+		// pattern 2:
+		var regex = /export\s+(class|function)\s+(.*?)\s+\{/;			// export class ToolBox {
+		var match = regex.exec(line);
+		if (match == null)
+			return line;
+
+		var classOrFunction = match[1];									// class
+		var varnameCapture  = match[2];									// ToolBox
+		var lineOut = `module.exports.${varnameCapture} = ${classOrFunction} ${varnameCapture} {`;
+		return lineOut;													// module.exports.ToolBox = class ToolBox {
 	}
 }

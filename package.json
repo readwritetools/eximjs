@@ -1,7 +1,7 @@
 {
   "name": "eximjs",
   "description": "Converts JavaScript 2015 inport/export statements to ES5 require/module statements",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "author": "Joe Honton",
   "license": "CC-BY-NC-ND 4.0",
   "private": true,

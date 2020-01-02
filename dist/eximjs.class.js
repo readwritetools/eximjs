@@ -22,42 +22,30 @@ module.exports = class Eximjs {
         expect(e, 'Pfile'), expect(r, 'Pfile');
         var t = new TextReader(), i = new TextWriter();
         t.open(e.name), i.open(r.name);
-        for (var n = ''; null != (n = t.getline()); ) n = this.fixupImport(n), n = this.fixupExport(n), 
-        i.putline(n);
+        for (var s = ''; null != (s = t.getline()); ) s = this.fixupImport(s), s = this.fixupExport(s), 
+        i.putline(s);
         t.close(), i.close();
     }
     fixupImport(e) {
         expect(e, 'String');
         var r = e.split('//')[0];
         r = r.trim();
-        var t = /import\s+(.*?)\s+from\s+(.*)/, i = t.exec(r);
-        if (null == i) return e;
-        var n, s, o = i[1], a = i[2], l = o.indexOf('{'), u = o.indexOf('}');
-        -1 != l && -1 != u && l < u ? (n = !0, s = o.substr(l + 1, u - l - 1).trim()) : (n = !1, 
-        s = o.trim()), ';' == a.charAt(a.length - 1) && (a = a.substr(0, a.length - 1));
-        var p = a.charAt(0), x = a.charAt(a.length - 1);
-        p != x || '"' != p && '\'' != p || (a = a.substr(1, a.length - 2));
-        var c = -1 != a.indexOf('./');
-        if (1 == n && 1 == c) {
-            a.search('.js') != a.length - 3 && (a += '.js');
-            return `var ${s} = require('${a}').${s};`;
-        }
-        if (1 == n && 0 == c) {
-            var f = a;
-            return `var ${s} = require('${f}').${s};`;
-        }
-        if (0 == n && 1 == c) {
-            a.search('.js') != a.length - 3 && (a += '.js');
-            return `var ${s} = require('${a}');`;
-        }
-        var v = new Pfile(a).getFilename();
-        return `var ${s} = require('${v}');`;
+        var t = /import\s+(.*?)\s+from\s+(.*)/.exec(r);
+        if (null == t) return e;
+        var i, s, n = t[1], o = t[2], a = n.indexOf('{'), l = n.indexOf('}');
+        -1 != a && -1 != l && a < l ? (i = !0, s = n.substr(a + 1, l - a - 1).trim()) : (i = !1, 
+        s = n.trim()), ';' == o.charAt(o.length - 1) && (o = o.substr(0, o.length - 1));
+        var u = o.charAt(0);
+        u != o.charAt(o.length - 1) || '"' != u && '\'' != u || (o = o.substr(1, o.length - 2));
+        var p = -1 != o.indexOf('./');
+        return 1 == i && 1 == p ? (o.search('.js') != o.length - 3 && (o += '.js'), `var ${s} = require('${o}').${s};`) : 1 == i && 0 == p ? `var ${s} = require('${o}').${s};` : 0 == i && 1 == p ? (o.search('.js') != o.length - 3 && (o += '.js'), 
+        `var ${s} = require('${o}');`) : `var ${s} = require('${new Pfile(o).getFilename()}');`;
     }
     fixupExport(e) {
         expect(e, 'String'), e = e.replace('export default', 'module.exports =');
-        var r = /export\s+(class|function)\s+(.*?)\s+\{/, t = r.exec(e);
-        if (null == t) return e;
-        var i = t[1], n = t[2], s = `module.exports.${n} = ${i} ${n} {`;
-        return s;
+        var r = /export\s+(class|function)\s+(.*?)\s+\{/.exec(e);
+        if (null == r) return e;
+        var t = r[1], i = r[2];
+        return `module.exports.${i} = ${t} ${i} {`;
     }
 };

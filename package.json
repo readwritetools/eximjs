@@ -1,25 +1,33 @@
 {
   "name": "eximjs",
-  "description": "Converts JavaScript 2015 inport/export statements to ES5 require/module statements",
   "version": "1.0.10",
-  "author": "Joe Honton",
-  "license": "CC-BY-NC-ND 4.0",
-  "private": true,
+  "description": "Converts new esModule import/export back to commonModule format",
+  "author": "Read Write Tools",
+  "license": "MIT",
   "main": "./dist/main.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/readwritetools/eximjs.git"
+  },
   "bin": {
     "eximjs": "./bin/eximjs"
   },
   "scripts": {
-    "test": "node ./src/main.js ./test/test01-es2015.js ./test/test01-es5.js",
-    "minify": "npm run minifyA && npm run minifyB && npm run minifyC",
-    "minifyA": "node /usr/lib/node_modules/uglify-es/bin/uglifyjs ./src/main.js         --output ./dist/main.js         --compress --mangle --keep-classnames --keep-fnames --beautify quote_style=1 --ecma 8",
-    "minifyB": "node /usr/lib/node_modules/uglify-es/bin/uglifyjs ./src/cli.class.js    --output ./dist/cli.class.js    --compress --mangle --keep-classnames --keep-fnames --beautify quote_style=1 --ecma 8",
-    "minifyC": "node /usr/lib/node_modules/uglify-es/bin/uglifyjs ./src/eximjs.class.js --output ./dist/eximjs.class.js --compress --mangle --keep-classnames --keep-fnames --beautify quote_style=1 --ecma 8",
     "bump-version": "npm version patch && git push && git push --tags"
   },
   "dependencies": {
     "joezone": "git+ssh://root@nk024:/keep/joezone#"
   },
+  "keywords": [
+    "cli",
+    "transpiler",
+    "commonModule",
+    "esModule"
+  ],
+  "bugs": {
+    "url": "https://github.com/readwritetools/eximjs/issues"
+  },
+  "homepage": "https://hub.readwritetools.com/tasks/eximjs.blue",
   "files": [
     "bin",
     "dist"

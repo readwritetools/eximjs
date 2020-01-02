@@ -22,8 +22,8 @@ module.exports = class CLI {
     }
     showVersion() {
         try {
-            var e = new Pfile(__dirname).addPath('../package.json').name, s = fs.readFileSync(e, 'utf-8'), t = JSON.parse(s);
-            return `version v${t.version}`;
+            var e = new Pfile(__dirname).addPath('../package.json').name, s = fs.readFileSync(e, 'utf-8');
+            return `version v${JSON.parse(s).version}`;
         } catch (e) {
             return `version unknown ${e.message}`;
         }
@@ -40,7 +40,7 @@ module.exports = class CLI {
         terminal.writeToConsoleOrStderr(e + '\n'), process.exit(0);
     }
     execute() {
-        var e = new Eximjs(), s = e.execute();
-        process.exit(s);
+        var e = new Eximjs().execute();
+        process.exit(e);
     }
 };

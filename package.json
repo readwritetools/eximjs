@@ -1,6 +1,6 @@
 {
   "name": "eximjs",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "Converts new esModule import/export back to commonModule format",
   "author": "Read Write Tools",
   "license": "MIT",

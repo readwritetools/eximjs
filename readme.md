@@ -72,7 +72,7 @@ changed. (The Read Write Tools `prorenata` builder has this capability.)
 
 The <span>eximjs</span> command line utility is licensed under the MIT
 License. It may be cloned from <a href='https://github.com/readwritetools/eximjs'>Github</a>
-, or installed via <a href='https://www.npmjs.com/package/rwt-eximjs'>NPM</a>
+, or installed via <a href='https://www.npmjs.com/package/eximjs'>NPM</a>
 .
 
 <img src='/img/blue-seal-mit.png' width=80 align=right />

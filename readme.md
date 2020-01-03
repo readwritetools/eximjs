@@ -6,7 +6,6 @@
 
 
 
-
 <figure>
 	<img src='/img/tasks/eximjs/eximjs-unsplash-chuttersnap.jpg' width='100%' />
 	<figcaption></figcaption>
@@ -35,6 +34,18 @@ problematic, and there has been considerable delay. In the interim, developers
 wishing to write forward-compatible code can use the new ES Module syntax and
 transpile it back to the old CommonJS syntax. The <span>eximjs</span> command
 line utility can be used to do that.
+
+### Prerequisites and installation
+
+The <span>eximjs</span> utility uses Node.js. Package installation is done via
+NPM. These are the only two prerequisites.
+
+To install the utility and make it available to your Bash shell, use this
+command.
+
+```bash
+[user@host]# npm install -g eximjs
+```
 
 ### Usage
 

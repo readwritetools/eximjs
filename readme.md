@@ -79,12 +79,10 @@ build tool that is sensitive to file modification timestamps, so that it is
 triggered for each file in a nested hierarchy only when a source file is
 changed. (The Read Write Tools `prorenata` builder has this capability.)
 
-### License and availability
+### Licens
 
 The <span>eximjs</span> command line utility is licensed under the MIT
-License. It may be cloned from <a href='https://github.com/readwritetools/eximjs'>Github</a>
-, or installed via <a href='https://www.npmjs.com/package/eximjs'>NPM</a>
-.
+License.
 
 <img src='/img/blue-seal-mit.png' width=80 align=right />
 
@@ -95,4 +93,13 @@ License. It may be cloned from <a href='https://github.com/readwritetools/eximjs
 	<p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
 	<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
 </details>
+
+### Availability
+
+
+<table>
+	<tr><td>Source code</td> 			<td><a href='https://github.com/readwritetools/eximjs'>github</a></td></tr>
+	<tr><td>Package installation</td> <td><a href='https://www.npmjs.com/package/eximjs'>NPM</a></td></tr>
+	<tr><td>Documentation</td> 		<td><a href='https://hub.readwritetools.com/tasks/eximjs.blue'>Read Write Hub</a></td></tr>
+</table>
 

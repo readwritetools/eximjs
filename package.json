@@ -22,7 +22,8 @@
     "cli",
     "transpiler",
     "commonModule",
-    "esModule"
+    "esModule",
+    "readwritetools"
   ],
   "bugs": {
     "url": "https://github.com/readwritetools/eximjs/issues"

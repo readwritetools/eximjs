@@ -86,7 +86,7 @@ module.exports = class CLI {
     }
     
     exit(message) {
-		terminal.writeToConsoleOrStderr("\nEximjs converts JavaScript 2015 inport/export statements to ES5 require/module statements\n");
+		terminal.writeToConsoleOrStderr("\nEximjs converts JavaScript 2015 import/export statements to ES5 require/module statements\n");
 		terminal.writeToConsoleOrStderr(message + "\n");
 		process.exit(0);
     

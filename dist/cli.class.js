@@ -1,5 +1,4 @@
 /* Copyright (c) 2018 Read Write Tools */
-/* Copyright (c) 2019 Read Write Tools */
 var expect = require('joezone').expect, terminal = require('joezone').terminal, Pfile = require('joezone').Pfile, Eximjs = require('./eximjs.class.js'), fs = require('fs');
 
 module.exports = class CLI {
@@ -37,7 +36,7 @@ module.exports = class CLI {
         e.push(''), e.push(''), e.join('\n');
     }
     exit(e) {
-        terminal.writeToConsoleOrStderr('\nEximjs converts JavaScript 2015 inport/export statements to ES5 require/module statements\n'), 
+        terminal.writeToConsoleOrStderr('\nEximjs converts JavaScript 2015 import/export statements to ES5 require/module statements\n'), 
         terminal.writeToConsoleOrStderr(e + '\n'), process.exit(0);
     }
     execute() {

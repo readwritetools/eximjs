@@ -16,7 +16,7 @@ template {
 
 // ---------- Convert blue document into Github Flavored readme.md ---------- 
 recurse {
-	source '/palau/www/hub.readwritetools.com/tasks/ghfm/eximjs.blue'
+	source '/palau/srv/hub.readwritetools.com/tasks/ghfm/eximjs.blue'
 	dest   '../readme.md' 
 	overwrite always
 	exec ghfm

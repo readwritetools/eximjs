@@ -1,5 +1,4 @@
 /* Copyright (c) 2018 Read Write Tools */
-/* Copyright (c) 2019 Read Write Tools */
 var expect = require('joezone').expect, terminal = require('joezone').terminal, Pfile = require('joezone').Pfile, TextReader = require('joezone').TextReader, TextWriter = require('joezone').TextWriter, fs = require('fs');
 
 module.exports = class Eximjs {
@@ -33,13 +32,14 @@ module.exports = class Eximjs {
         r = r.trim();
         var t = /import\s+(.*?)\s+from\s+(.*)/.exec(r);
         if (null == t) return e;
-        var i, s, n = t[1], o = t[2], a = n.indexOf('{'), l = n.indexOf('}');
-        -1 != a && -1 != l && a < l ? (i = !0, s = n.substr(a + 1, l - a - 1).trim()) : (i = !1, 
+        var i, s, n = t[1], o = t[2], l = n.indexOf('{'), a = n.indexOf('}');
+        -1 != l && -1 != a && l < a ? (i = !0, s = n.substr(l + 1, a - l - 1).trim()) : (i = !1, 
         s = n.trim()), ';' == o.charAt(o.length - 1) && (o = o.substr(0, o.length - 1));
         var u = o.charAt(0);
         u != o.charAt(o.length - 1) || '"' != u && '\'' != u || (o = o.substr(1, o.length - 2));
-        var p = -1 != o.indexOf('./');
-        return 1 == i && 1 == p ? (o.search('.js') != o.length - 3 && (o += '.js'), `var ${s} = require('${o}').${s};`) : 1 == i && 0 == p ? `var ${s} = require('${o}').${s};` : 0 == i && 1 == p ? (o.search('.js') != o.length - 3 && (o += '.js'), 
+        var x = -1 != o.indexOf('./');
+        return 1 == i && 1 == x ? (o.lastIndexOf('.js') != o.length - 3 && (o += '.js'), 
+        `var ${s} = require('${o}').${s};`) : 1 == i && 0 == x ? `var ${s} = require('${o}').${s};` : 0 == i && 1 == x ? (o.lastIndexOf('.js') != o.length - 3 && (o += '.js'), 
         `var ${s} = require('${o}');`) : `var ${s} = require('${new Pfile(o).getFilename()}');`;
     }
     fixupExport(e) {

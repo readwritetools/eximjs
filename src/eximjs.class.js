@@ -126,7 +126,7 @@ module.exports = class Eximjs {
 		// 1: import {ToolBox} from '../tool-box.js' -->  var ToolBox = require('../tool-box.js').ToolBox;
 		if (bCurlyBraceVarname == true && bRelativePath == true) {
 			// append ".js"
-			if (fileCapture.search('.js') != fileCapture.length - 3)		// ../tool-box.class.js
+			if (fileCapture.lastIndexOf('.js') != fileCapture.length - 3)		// ../tool-box.class.js
 				fileCapture += '.js';
 			var lineOut = `var ${varname} = require('${fileCapture}').${varname};`;
 			return lineOut;
@@ -143,7 +143,7 @@ module.exports = class Eximjs {
 		//    import ToolBox from '../tool-box.js'  -->  var ToolBox = require('../toolbox.js);
 		else if (bCurlyBraceVarname == false && bRelativePath == true) {
 			// append ".js"
-			if (fileCapture.search('.js') != fileCapture.length - 3)		// ../../joezone/src/tool-box.class.js
+			if (fileCapture.lastIndexOf('.js') != fileCapture.length - 3)		// ../../joezone/src/tool-box.class.js
 				fileCapture += '.js';
 			var lineOut = `var ${varname} = require('${fileCapture}');`;
 			return lineOut;
